@@ -5,6 +5,10 @@
      <title>home</title>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
   <style>
+	body {
+  		background-color: #e6f0ff; /* light blue for Version 1 */
+		}
+
      /* ------------
       header
       ---------- */
@@ -139,9 +143,26 @@
 
   
 
-  </style>
+  </style>1
 </head>
 <body>
+
+<!-- VERSION LABEL -->
+<div style="
+position: fixed;
+top: 10px;
+right: 10px;
+background: #007bff;
+color: white;
+padding: 6px 12px;
+font-size: 12px;
+font-family: Arial, sans-serif;
+border-radius: 4px;
+z-index: 9999;
+">
+Version 1
+</div>
+
   <header>
     <div class="menu">
       <div class="logo">DYP NOTES</div>
