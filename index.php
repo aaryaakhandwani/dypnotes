@@ -134,19 +134,31 @@
 
 }
 
-.mainmenu a :hover {
+.mainmenu a:hover {
 
  color:  #e3e3e3;
 }
+#announcement {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 12px;
+  text-align: center;
+  font-weight: bold;
+  border-bottom: 1px solid #ffeeba;
+}
+
+#announcement button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  float: right;
+  cursor: pointer;
+}
 
 
-
-  
-
-  </style>1
+  </style>
 </head>
 <body>
-
 <!-- VERSION LABEL -->
 <div style="
 position: fixed;
@@ -162,7 +174,11 @@ z-index: 9999;
 ">
 Version 1
 </div>
-
+<!-- ANNOUNCEMENT BAR -->
+<div id="announcement">
+  📢 New update: Search & Filter feature is being rolled out for students.
+  <button onclick="this.parentElement.style.display='none'">✖</button>
+</div>
   <header>
     <div class="menu">
       <div class="logo">DYP NOTES</div>
