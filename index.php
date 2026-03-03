@@ -1,241 +1,204 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>home</title>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DYP Notes — Your College Resources, All in One Place</title>
+  <meta name="description" content="Access notes, question papers, recorded lectures & toppers' tips — curated for DYP Kolhapur students." />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
   <style>
-	body {
-  		background-color: #e6f0ff; /* light blue for Version 1 */
-		}
-
-     /* ------------
-      header
-      ---------- */
-    .menu {
+    /* ── Homepage-specific styles (hero, announcement, cards) ── */
+    #announcement {
+      background: var(--warn-bg);
+      border-bottom: 2px solid var(--warn-border);
+      color: var(--warn-text);
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 600;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      height: 60px;
-      background-color: #1023b6;
+      gap: 10px;
+      position: relative;
+      z-index: 100;
+    }
+
+    #announcement button {
+      background: none;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: var(--warn-text);
+      line-height: 1;
+      padding: 0 4px;
+      margin-left: auto;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 24px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #fff;
+      border: 1.5px solid #c7d4ff;
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 100px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 12px #1023b620;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 6vw, 3.4rem);
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 span { color: var(--blue); }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* Card color themes */
+    .c1 .s-card-icon { background: #e6ebff; }
+    .c2 .s-card-icon { background: #fff3e6; }
+    .c3 .s-card-icon { background: #e6f9f0; }
+    .c4 .s-card-icon { background: #fce6ff; }
+    .c5 .s-card-icon { background: #fff8e6; }
+
+    /* Version tag */
+    .version-tag {
+      position: fixed;
+      bottom: 14px;
+      right: 14px;
+      background: var(--blue);
       color: #fff;
-    }
-     
-    .menu img {
-    position: relative;
-}
-
-.menu img {
-    position: absolute;
-    top: 0;
-    left: 0;
-   
-    width: 60px;
-    display: flex;
-   margin-top: 8px;
-  
-   
-}
-            
-    
-    .menu .logo {
-      font-weight: bold;
-      font-size: 25px;
-      margin-left: 60px;
-      font-family: Arial, sans-serif;
-     
-      
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 5px 11px;
+      border-radius: 8px;
+      z-index: 999;
+      letter-spacing: 0.04em;
     }
 
-   
-    
-  
- 
-
-   .buttons {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  grid-template-rows: repeat(3, 1fr); /* 3 rows */
-  gap: 20px; /* Gap between grid items */
-}
-
-.dyp {
-  position: relative;
-  background: #e3e3e3;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #f2efef;
-  border-radius: 20px;
-  width: 300px;
-  height: 200px;
-  margin: 40px 0;
-  left: 90px;
-  font-weight: bold;
-  font-size: 20px;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease-in-out;
-  
-  
-}
-
-.dyp a {
-
-    color: #000000;
-}
-
-.dyp a {
-  text-decoration: none;
-}
-
-.dyp:nth-child(3n+1) {
-  grid-column: 1;
-}
-
-.dyp:nth-child(3n+2) {
-  grid-column: 2;
-}
-
- .dyp:nth-child(3n+3) {
-  grid-column: 3;
-} 
- 
-
- .dyp :hover {
-
-    color: #16248e;
- }
-
- /* --------------
-      header content
-  ------------------ */
-
-
-  
-.mainmenu {
-  position: absolute;
-  top: 26px; /* Adjust the value as needed */
-  right: 40px; /* Adjust the value as needed */
-  
-}
-
-.mainmenu a {
-  margin-left: 10px; /* Add some spacing between menu items */
- 
-}
- 
-.mainmenu a {
-
-    text-decoration: none;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    margin: 30px;
-
-}
-
-.mainmenu a:hover {
-
- color:  #e3e3e3;
-}
-#announcement {
-  background-color: #fff3cd;
-  color: #856404;
-  padding: 12px;
-  text-align: center;
-  font-weight: bold;
-  border-bottom: 1px solid #ffeeba;
-}
-
-#announcement button {
-  background: none;
-  border: none;
-  font-size: 16px;
-  float: right;
-  cursor: pointer;
-}
-
-
+    @media (max-width: 640px) {
+      .hero { padding: 40px 18px 16px; }
+    }
   </style>
 </head>
 <body>
-<!-- VERSION LABEL -->
-<div style="
-position: fixed;
-top: 10px;
-right: 10px;
-background: #007bff;
-color: white;
-padding: 6px 12px;
-font-size: 12px;
-font-family: Arial, sans-serif;
-border-radius: 4px;
-z-index: 9999;
-">
-Version 1
-</div>
-<!-- ANNOUNCEMENT BAR -->
+
+<!-- Version Tag -->
+<div class="version-tag">v2</div>
+
+<!-- Announcement -->
 <div id="announcement">
-  📢 New update: Search & Filter feature is being rolled out for students.
-  <button onclick="this.parentElement.style.display='none'">✖</button>
+  📢 New update: Search &amp; Filter feature is being rolled out for students.
+  <button onclick="this.parentElement.style.display='none'" aria-label="Close">✕</button>
 </div>
-  <header>
-    <div class="menu">
-      <div class="logo">DYP NOTES</div>
-         
-      <img src="\college website\dyp logo 1.jpeg" alt="logo">
-    
-      
 
-    </div>
-    <!-- <?php if (isset($user)): ?>
-        
-        <p>Hello <?= htmlspecialchars($user["name"]) ?></p>
-        
-        <p><a href="logout.php">Log out</a></p>
-        
-    <?php else: ?>
-        
-        <p><a href="login.php">Log in</a> or <a href="signup.html">sign up</a></p>
-        
-    <?php endif; ?> -->
-    
-  </header>
-           <div class="mainmenu">
-                 <a href="http://localhost/college%20website/index.php">Home</a>
-                 
-                 <a href="http://127.0.0.1:5500/home%20page/about%20us.html">About us</a>
-                 <a href="http://127.0.0.1:5500/contact%20us.html">Contact Us</a>
+<!-- Navbar -->
+<nav class="s-nav">
+  <a class="s-nav-brand" href="index.php">
+    <img src="images/dyp_logo.jpeg" alt="DYP Logo" />
+    <span>DYP Notes</span>
+  </a>
+  <div class="s-nav-links">
+    <a href="index.php" class="active">Home</a>
+    <a href="contact us.html">Contact Us</a>
+  </div>
+  <button class="s-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="s-mobile-menu">
+  <a href="index.php">Home</a>
+  <a href="contact us.html">Contact Us</a>
+</div>
 
-           </div>
-  <div class="buttons">
-   <div class="dyp notes"> <a href="http://127.0.0.1:5500/notes.html">Notes</a></div>
-   <div class="dyp
-   quetion"> <a href="http://127.0.0.1:5500/que%20paper.html"> Question Papers (Autonomus)</a></div>
-   <div class="dyp lecturs"> <a href="http://127.0.0.1:5500/coming%20soon.html">Recorded Lectures</a></div>
-   <div class="dyp suggestions"> <a href="http://127.0.0.1:5500/toppers%20sugg.html">Toppers Suggestions</a></div>
-   <div class="dyp books"> <a href="http://127.0.0.1:5500/coming%20soon.html">Reference Books</a></div>
-     
-   <!-- <div class="dyp coming"> Coming soon... </div> -->
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-badge">✦ DYP Kolhapur · Student Resource Hub</div>
+  <h1>Your College Resources,<br><span>All in One Place</span></h1>
+  <p>Access notes, question papers, recorded lectures & toppers' tips — curated for DYP students.</p>
+</section>
 
-    </div>
+<!-- Cards -->
+<section class="s-section">
+  <p class="s-section-label">Browse Resources</p>
+  <div class="s-card-grid">
 
+    <a class="s-card c1" href="notes.html">
+      <div class="s-card-icon">📄</div>
+      <div>
+        <div class="s-card-title">Notes</div>
+        <div class="s-card-desc">Subject-wise notes curated by students and faculty for all semesters.</div>
+      </div>
+      <div class="s-card-arrow">Browse Notes →</div>
+    </a>
+
+    <a class="s-card c2" href="que paper.html">
+      <div class="s-card-icon">📝</div>
+      <div>
+        <div class="s-card-title">Question Papers</div>
+        <div class="s-card-desc">Autonomous exam question papers to help you prepare better and faster.</div>
+      </div>
+      <div class="s-card-arrow">View Papers →</div>
+    </a>
+
+    <a class="s-card c3 soon" href="#">
+      <div class="s-soon-badge">Coming Soon</div>
+      <div class="s-card-icon">🎬</div>
+      <div>
+        <div class="s-card-title">Recorded Lectures</div>
+        <div class="s-card-desc">Watch chapter-wise recorded lectures from experienced faculty.</div>
+      </div>
+      <div class="s-card-arrow">Explore →</div>
+    </a>
+
+    <a class="s-card c4" href="toppers sugg.html">
+      <div class="s-card-icon">🏆</div>
+      <div>
+        <div class="s-card-title">Toppers' Suggestions</div>
+        <div class="s-card-desc">Tips, strategies, and study plans shared by top-scoring students.</div>
+      </div>
+      <div class="s-card-arrow">Read Tips →</div>
+    </a>
+
+    <a class="s-card c5 soon" href="#">
+      <div class="s-soon-badge">Coming Soon</div>
+      <div class="s-card-icon">📚</div>
+      <div>
+        <div class="s-card-title">Reference Books</div>
+        <div class="s-card-desc">Curated reference books for deeper understanding of your subjects.</div>
+      </div>
+      <div class="s-card-arrow">Explore →</div>
+    </a>
+
+  </div>
+</section>
+
+<footer class="s-footer">© 2025 DYP Notes · Made for Students, by Students</footer>
+
+<script src="nav.js"></script>
 </body>
-<?php
-
-session_start();
-
-if (isset($_SESSION["user_id"])) {
-    
-    $mysqli = require __DIR__ . "\login\database.php";
-    
-    $sql = "SELECT * FROM user
-            WHERE id = {$_SESSION["user_id"]}";
-            
-    $result = $mysqli->query($sql);
-    
-    $user = $result->fetch_assoc();
-}
-
-?>
 </html>

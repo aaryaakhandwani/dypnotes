@@ -4,7 +4,7 @@ $is_invalid = false;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     
-  $mysqli = require __DIR__ . "\database.php";
+  $mysqli = require __DIR__ . "/database.php";
     
     $sql = sprintf("SELECT * FROM user
                     WHERE email = '%s'",
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             
             $_SESSION["user_id"] = $user["id"];
             
-            header("Location: http://localhost/college%20website/index.php");
+            header("Location: /dypnotes/index.php");
             exit;
         }
     }
@@ -33,269 +33,77 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 ?>
-
-
-
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page DYP NOTES</title>
-  <script>
-   
-  </script>
-  <style>
-
-
-/* Global styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-/* Header styles */
-header {
-  background-color: #1023b6;
-  color: #fff;
-  padding: 20px;
-  text-align: center;
-}
-
-header h2.logo {
-  margin: 0;
-}
-
-/* Wrapper styles */
-.wraper {
-  max-width: 300px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-}
-
-/* Login box styles */
-.login {
-  margin-bottom: 20px;
-}
-
-.login h2 {
-  margin-top: 0;
-}
-
-/* Input box styles */
-.input.box {
-  position: relative;
-  margin-bottom: 10px;
-}
-
-.input.box input {
-  width: 70%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.input.box label {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  color: #999;
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
-
-.input.box input:focus + label,
-.input.box input:not(:placeholder-shown) + label {
-  top: -12px;
-  font-size: 12px;
-  color: #333;
-  background-color: #fff;
-  padding: 4px 6px;
-}
-
-
-  
-/* Checkbox styles */
-.input.box input[type="checkbox"] {
-  display:flex;
-  position: relative;
-  padding-left: 20px;
-  cursor: pointer;
-  
-  
-}
-  /* login button */
-.input.box button {
-  background: #5264e9;
-  color: #ffffff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 20%;
-}
-
-.input.box button:hover {
-  background-color: #1023b6;
-}
-
-
-
-
-/*create a new account link styles */
-
-.input.box a {
-  color: #999;
-  text-decoration: none;
-  font-size: small;
-  transition: color 0.3s ease;
-  position: absolute;
-}
-
-.input.box a:hover {
-  color: #333;
-  text-decoration: underline;
-}
-
-   
-
-
-
-
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — DYP Notes</title>
+  <meta name="description" content="Login to your DYP Notes account." />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
-  
-  
-  <header>            
-     <h2 class="logo"> DYP NOTES</h2> 
 
-  </header>
+<!-- Navbar -->
+<nav class="s-nav">
+  <a class="s-nav-brand" href="../index.php">
+    <img src="../images/dyp_logo.jpeg" alt="DYP Logo" />
+    <span>DYP Notes</span>
+  </a>
+  <div class="s-nav-links">
+    <a href="../index.php">Home</a>
+    <a href="../contact us.html">Contact Us</a>
+  </div>
+  <button class="s-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="s-mobile-menu">
+  <a href="../index.php">Home</a>
+  <a href="../contact us.html">Contact Us</a>
+</div>
 
-  <div class="wraper"> 
-<div class="login box ">  
-      <H2>login</H2>   
-        <form method="post">
-         
-         
-          
-         
-          <div class="input box">
-              <span class="icon"></span>
-                 <input type="email" required name="email"
-                  id="email"  value="<?= htmlspecialchars($_POST["email"] ?? "") ?>">   
-                     <label for="email"> email</label>
-                          
-                   
-                   
-                     <div> 
-                    <div class="input box">
-                      <span class="icon"></span>
-                         <input type="password" required name="password"
-                          id=" password">   
-                        
-                        <label for="password">password</label>
-                         </div> 
-                         
-                         
-                        <div> 
-                          <div class="input box">         
-                            <input type="checkbox" name=""
-                            id=" checkbox">   
-                          
-                          <label for="checkbox">remember me</label>
-                         
-                        </div>  
+<!-- Auth Form -->
+<div class="s-auth-wrap">
+  <div class="s-auth-card">
+    <h2>Welcome Back</h2>
+    <p class="s-auth-sub">Sign in to access your DYP Notes account.</p>
 
+    <?php if ($is_invalid): ?>
+      <div style="background:#ffe6ea; color:#b91c3a; padding:12px 16px; border-radius:12px; font-size:0.88rem; font-weight:600; margin-bottom:18px;">
+        ⚠ Invalid email or password. Please try again.
+      </div>
+    <?php endif; ?>
 
-                        <div>
-                          <div class="input box"> 
-                            <button>login</button>
-                           
-                            
-                        
-                        
+    <form method="post">
+      <div class="s-form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required
+               value="<?= htmlspecialchars($_POST["email"] ?? "") ?>" />
+      </div>
 
+      <div class="s-form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required />
+      </div>
 
+      <div class="s-check-group">
+        <input type="checkbox" id="remember" name="remember" />
+        <label for="remember">Remember me</label>
+      </div>
 
+      <button class="s-btn" type="submit">Login →</button>
+    </form>
 
-                        </div>
-                        
-                        <div>
+    <p class="s-auth-footer">
+      Don't have an account? <a href="signup.html">Create one</a>
+    </p>
+  </div>
+</div>
 
-                          <div class="input box">   
-                            <a href="http://127.0.0.1:5500/login/signup.html">create a new account</a>
-                          </div>
-                           
-                          <div>
+<footer class="s-footer">© 2025 DYP Notes · Made for Students, by Students</footer>
 
-                           
-
-
-
-                        </form>
-                      </div>
-                    </div>
-                       
-                 
-                    
-
-
-
-                          
-
-
-
-
-
-
-                
-
-
-
-
-
-            
-
-
-
-
-
-     
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="../nav.js"></script>
 </body>
-
-
 </html>

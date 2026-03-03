@@ -1,55 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>contact Us</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
-            margin: 0;
-            padding: 0;
-        }
-        
-        header {
-            background-color: #1023b6;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        h1 {
-            color: #fff;
-            margin: 20px 0;
-            text-align: center;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        p {
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us — DYP Notes</title>
+  <meta name="description" content="Get in touch with the DYP Notes team for feedback, suggestions, or contributions." />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <h1>Contact Us</h1>
-    </header>
-    <div class="container">
-        <p>
-            Contact Us:
-            We value your feedback and suggestions. If you have any questions, concerns, or would like to contribute to our platform, please feel free to contact us through the provided email address or contact form.
-            
-            xyz@gmail.com
-        </p>
+
+<!-- Navbar -->
+<nav class="s-nav">
+  <a class="s-nav-brand" href="index.php">
+    <img src="images/dyp_logo.jpeg" alt="DYP Logo" />
+    <span>DYP Notes</span>
+  </a>
+  <div class="s-nav-links">
+    <a href="index.php">Home</a>
+    <a href="notes.html">Notes</a>
+    <a href="contact us.html" class="active">Contact Us</a>
+  </div>
+  <button class="s-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="s-mobile-menu">
+  <a href="index.php">Home</a>
+  <a href="notes.html">Notes</a>
+  <a href="contact us.html">Contact Us</a>
+</div>
+
+<!-- Page Header -->
+<section class="s-page-header">
+  <div class="s-badge">📬 Get in Touch</div>
+  <h1>Contact <em>Us</em></h1>
+  <p>We value your feedback and suggestions. Reach out to us anytime.</p>
+</section>
+
+<!-- Contact Content -->
+<section class="s-section">
+  <div class="s-contact-grid">
+
+    <div class="s-contact-item">
+      <div class="s-ci-icon">📧</div>
+      <div class="s-ci-text">
+        <h3>Email Us</h3>
+        <p>Have a question or want to contribute? Send us an email and we'll get back to you.</p>
+        <p style="margin-top: 8px;"><strong>xyz@gmail.com</strong></p>
+      </div>
     </div>
+
+    <div class="s-contact-item">
+      <div class="s-ci-icon">💡</div>
+      <div class="s-ci-text">
+        <h3>Contribute</h3>
+        <p>Want to share your notes, question papers, or study tips? We'd love to feature your work on DYP Notes.</p>
+      </div>
+    </div>
+
+    <div class="s-contact-item">
+      <div class="s-ci-icon">🐛</div>
+      <div class="s-ci-text">
+        <h3>Report Issues</h3>
+        <p>Found a broken link or incorrect content? Let us know so we can fix it quickly.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Contact Form -->
+  <div style="max-width: 600px; margin: 32px auto 0;">
+    <article class="s-article">
+      <h3 style="margin-top: 0;">Send a Message</h3>
+      <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent.');">
+        <div class="s-form-group">
+          <label for="contact-name">Your Name</label>
+          <input type="text" id="contact-name" placeholder="Enter your name" required />
+        </div>
+        <div class="s-form-group">
+          <label for="contact-email">Email Address</label>
+          <input type="email" id="contact-email" placeholder="Enter your email" required />
+        </div>
+        <div class="s-form-group">
+          <label for="contact-msg">Message</label>
+          <textarea id="contact-msg" placeholder="Write your message here..." required></textarea>
+        </div>
+        <button class="s-btn" type="submit">Send Message →</button>
+      </form>
+    </article>
+  </div>
+</section>
+
+<footer class="s-footer">© 2025 DYP Notes · Made for Students, by Students</footer>
+
+<script src="nav.js"></script>
 </body>
 </html>

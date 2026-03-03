@@ -1,176 +1,74 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up — DYP Notes</title>
+  <meta name="description" content="Create a new DYP Notes account." />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
   <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
-  <script src="college website\validation.js" defer></script> 
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create New Account - DYP NOTES</title>
- 
- <style>
-
-    /* Global styles */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Header styles */
-    header {
-      background-color: #1023b6;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-
-    header h2.logo {
-      margin: 0;
-    }
-
-    /* Wrapper styles */
-    .wraper {
-      max-width: 300px;
-      margin: 20px auto;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-    }
-
-    /* Login box styles */
-    .login {
-      margin-bottom: 20px;
-    }
-
-    .login h2 {
-      margin-top: 0;
-    }
-
-    /* Input box styles */
-    .input.box {
-      position: relative;
-      margin-bottom: 10px;
-    }
-
-    .input.box input {
-      width: 70%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-
-    .input.box label {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      color: #999;
-      pointer-events: none;
-      transition: all 0.3s ease;
-    }
-
-    .input.box input:focus + label,
-    .input.box input:not(:placeholder-shown) + label {
-      top: -12px;
-      font-size: 12px;
-      color: #333;
-      background-color: #fff;
-      padding: 4px 6px;
-    }
-
-    /* Checkbox styles */
-    .input.box input[type="checkbox"] {
-      display: flex;
-      position: relative;
-      padding-left: 20px;
-      cursor: pointer;
-    }
-
-    /* Login button */
-    .input.box button{
-      background: #5264e9;
-      color: #ffffff;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 30%;
-    }
-
-    .input.box button:hover {
-      background-color: #1023b6;
-    }
-
-    /* Create a new account link styles */
-    .input.box a {
-      color: #999;
-      text-decoration: none;
-      font-size: small;
-      transition: color 0.3s ease;
-      position: absolute;
-      right: 10px;
-    }
-
-    .input.box a:hover {
-      color: #333;
-      text-decoration: underline;
-    }
-  </style>
-
-
+  <script src="../validation.js" defer></script>
 </head>
 <body>
 
-  <header>            
-    <h2 class="logo">DYP NOTES</h2>
-  </header>
-
-
- 
-  <div class="wraper"> 
-    <div class="login box">  
-      <h2>Create New Account</h2>   
-      <form action="http://localhost/college%20website/process-signup.php" method="post" id="signup" novalidate>
-
-        <div class="input box">
-            <span class="icon"></span>
-               <input type="text" required name="name"
-                id="name">   
-                   <label for="name"> name</label>
-
-
-
-        <div class="input box">
-          <span class="icon"></span>
-          <input type="email" required name="email" id="email">   
-          <label for="email">Email</label>
-        </div>
-
-        <div class="input box">
-          <span class="icon"></span>
-          <input type="password" required name="password" id="password">   
-          <label for="password">
-
-                           Password</label>
-        </div> 
-
-        <div class="input box">
-          <span class="icon"></span>
-          <input type="password" required name="password_confirmation" id="password_confirmation">   
-          <label for="password_confirmation">
-
-                          confirm Password</label>
-        </div> 
-
-        <div class="input box">   
-          <button>sign up</button>
-        </div>
-            
-        
-        </div>
-      </form>
-    </div>
+<!-- Navbar -->
+<nav class="s-nav">
+  <a class="s-nav-brand" href="../index.php">
+    <img src="../images/dyp_logo.jpeg" alt="DYP Logo" />
+    <span>DYP Notes</span>
+  </a>
+  <div class="s-nav-links">
+    <a href="../index.php">Home</a>
+    <a href="../contact us.html">Contact Us</a>
   </div>
+  <button class="s-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="s-mobile-menu">
+  <a href="../index.php">Home</a>
+  <a href="../contact us.html">Contact Us</a>
+</div>
+
+<!-- Auth Form -->
+<div class="s-auth-wrap">
+  <div class="s-auth-card">
+    <h2>Create Account</h2>
+    <p class="s-auth-sub">Join DYP Notes to access all resources.</p>
+
+    <form action="../process-signup.php" method="post" id="signup" novalidate>
+      <div class="s-form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required />
+      </div>
+
+      <div class="s-form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+      </div>
+
+      <div class="s-form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Create a password" required />
+      </div>
+
+      <div class="s-form-group">
+        <label for="password_confirmation">Confirm Password</label>
+        <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm your password" required />
+      </div>
+
+      <button class="s-btn" type="submit">Sign Up →</button>
+    </form>
+
+    <p class="s-auth-footer">
+      Already have an account? <a href="login.php">Login</a>
+    </p>
+  </div>
+</div>
+
+<footer class="s-footer">© 2025 DYP Notes · Made for Students, by Students</footer>
+
+<script src="../nav.js"></script>
 </body>
 </html>

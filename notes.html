@@ -1,225 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        Notes
-    </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes — DYP Notes</title>
+  <meta name="description" content="Access subject-wise notes for all semesters at DYP Kolhapur." />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css'>
-  <style>
-  /* -----------
-  header
-  ----------- */
 
+<!-- Navbar -->
+<nav class="s-nav">
+  <a class="s-nav-brand" href="index.php">
+    <img src="images/dyp_logo.jpeg" alt="DYP Logo" />
+    <span>DYP Notes</span>
+  </a>
+  <div class="s-nav-links">
+    <a href="index.php">Home</a>
+    <a href="contact us.html">Contact Us</a>
+  </div>
+  <button class="s-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="s-mobile-menu">
+  <a href="index.php">Home</a>
+  <a href="contact us.html">Contact Us</a>
+</div>
 
-    .menu {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 60px;
-      background-color: #1023b6;
-      color: #fff;
-    }
-     
-    .menu img {
-    position: relative;
-}
+<!-- Page Header -->
+<section class="s-page-header">
+  <div class="s-badge">📄 Notes Collection</div>
+  <h1>Browse <em>Notes</em></h1>
+  <p>Subject-wise notes curated by students and faculty — select your year or explore coding resources.</p>
+</section>
 
-.menu img {
-    position: absolute;
-    top: 0;
-    left: 0;
-   
-    width: 60px;
-    display: flex;
-   margin-top: 8px;
-  
-   
-}
-            
-    
-    .menu .logo {
-      font-weight: bold;
-      font-size: 25px;
-      margin-left: 60px;
-      font-family: Arial, sans-serif;
-     
-      
-    }
+<!-- Cards -->
+<section class="s-section">
+  <p class="s-section-label">Select Category</p>
+  <div class="s-card-grid">
 
-   
-    
-  /* -----------
-   Body
-  ------------
-  */
+    <a class="s-card" href="codinglangs.html">
+      <div class="s-card-icon s-icon-blue">💻</div>
+      <div>
+        <div class="s-card-title">Coding Languages</div>
+        <div class="s-card-desc">Notes & resources for C, Java, Python, PHP, HTML, CSS, JavaScript, and MySQL.</div>
+      </div>
+      <div class="s-card-arrow">Browse Languages →</div>
+    </a>
 
-    .buttons {
-  display: grid;
-  grid-template-columns: 1fr ; /* 2 columns */
-  grid-template-rows: 1fr ; /* 2 rows */
-  gap: 10px; /* Gap between grid items */
-  justify-items: end; /* Align grid items to the end */
-  margin-right: 90px; /* Add some margin to the right side */
-  
-}
+    <a class="s-card" href="notestable.html">
+      <div class="s-card-icon s-icon-green">📗</div>
+      <div>
+        <div class="s-card-title">First Year</div>
+        <div class="s-card-desc">Physics, Linear Algebra, Chemistry, CPP, ECM, and more subjects.</div>
+      </div>
+      <div class="s-card-arrow">View Notes →</div>
+    </a>
 
-.dyp {
-  /* Remove the left: 90px; property */
-  /* Add margin to create spacing between the grid items */
-  margin-bottom: 10px;
-}
+    <a class="s-card soon" href="#">
+      <div class="s-soon-badge">Coming Soon</div>
+      <div class="s-card-icon s-icon-orange">📙</div>
+      <div>
+        <div class="s-card-title">Second Year</div>
+        <div class="s-card-desc">Notes for second year subjects will be added soon.</div>
+      </div>
+      <div class="s-card-arrow">Explore →</div>
+    </a>
 
-.dyp {
-  position: relative;
-  background: #e3e3e3;
-  font-family: Arial, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #f2efef;
-  border-radius: 150px;
-  width: 300px;
-  height: 300px;
-  margin: 15px 0;
-  left: 90px;
-  font-weight: bold;
-  font-size: 20px;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease-in-out;
-  
-  
-}
+    <a class="s-card soon" href="#">
+      <div class="s-soon-badge">Coming Soon</div>
+      <div class="s-card-icon s-icon-purple">📕</div>
+      <div>
+        <div class="s-card-title">Third Year</div>
+        <div class="s-card-desc">Notes for third year subjects will be added soon.</div>
+      </div>
+      <div class="s-card-arrow">Explore →</div>
+    </a>
 
-.dyp a {
+    <a class="s-card soon" href="#">
+      <div class="s-soon-badge">Coming Soon</div>
+      <div class="s-card-icon s-icon-red">📘</div>
+      <div>
+        <div class="s-card-title">Last Year</div>
+        <div class="s-card-desc">Notes for final year subjects will be added soon.</div>
+      </div>
+      <div class="s-card-arrow">Explore →</div>
+    </a>
 
-    color: #000000;
-}
+    <a class="s-card" href="placeque.html">
+      <div class="s-card-icon s-icon-yellow">🏢</div>
+      <div>
+        <div class="s-card-title">Placement Question Papers</div>
+        <div class="s-card-desc">Practice papers from top companies like Google, Microsoft, TCS, and more.</div>
+      </div>
+      <div class="s-card-arrow">View Papers →</div>
+    </a>
 
-.dyp a {
-  text-decoration: none;
-}
+  </div>
+</section>
 
-.dyp:nth-child(3n+1) {
-  grid-column: 1;
-}
+<footer class="s-footer">© 2025 DYP Notes · Made for Students, by Students</footer>
 
-.dyp:nth-child(3n+2) {
-  grid-column: 2;
-}
-
- .dyp:nth-child(3n+3) {
-  grid-column: 3;
-} 
- 
-
- .dyp :hover {
-
-    color: #16248e;
- }
-
- /* --------------
-      header content
-  ------------------ */
-
-
-  
-.mainmenu {
-  position: absolute;
-  top: 26px; /* Adjust the value as needed */
-  right: 40px; /* Adjust the value as needed */
-  
-}
-
-.mainmenu a {
-  margin-left: 10px; /* Add some spacing between menu items */
- 
-}
- 
-.mainmenu a {
-
-    text-decoration: none;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    margin: 30px;
-
-}
-
-.mainmenu a :hover {
-
- color:  #e3e3e3;
-}
-
-  /*-----------------
-      notice board
-    -----------------  */
-
-
-    .notice img {
-
-      position: absolute;
-       top: 140px;
-      left: 40px; 
-      width: 500px;
-
-
-
-    }
-
-
-    
-
-
-
-  
-
-  </style>
-</head>
-<body>
-  <header>
-    <div class="menu">
-      <div class="logo">DYP NOTES</div>
-         
-      <img src="\dyp logo 1.jpeg" alt="logo">
-    
-      
-
-    </div>
-   
-    
-  </header>
-           <div class="mainmenu">
-                 <a href="http://localhost/college%20website/index.php">Home</a>
-                 
-                 <a href="http://127.0.0.1:5500/home%20page/about%20us.html">About us</a>
-                 <a href="http://127.0.0.1:5500/contact%20us.html">Contact Us</a>
-
-           </div>
-  <div class="buttons">
-   <div class="dyp notes"> <a href="http://127.0.0.1:5500/codinglangs.html">Coding Langs.</a></div>
-   <div class="dyp
-   quetion"> <a href="http://127.0.0.1:5500/notestable.html"> First Year</a></div>
-   <div class="dyp lecturs"> <a href="http://127.0.0.1:5500/coming%20soon.html">Second Year</a></div>
-   <div class="dyp suggestions"> <a href="http://127.0.0.1:5500/coming%20soon.html">Third Year</a></div>
-   <div class="dyp books"> <a href="http://127.0.0.1:5500/coming%20soon.html">Last Year</a></div>
-     
-   <div class="dyp coming"> <a href="http://127.0.0.1:5500/placeque.html"> placement Question Papers</a> </div>
-
-    </div>
-          <div class="notice"><img src="\notice.png.png" alt="notice"></div>
-       
-</body>
-
-</html>
-
-    
-
+<script src="nav.js"></script>
 </body>
 </html>

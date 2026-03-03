@@ -1,154 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding Languages</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coding Languages — DYP Notes</title>
+  <meta name="description" content="Download coding language notes for C, Java, Python, PHP, HTML, CSS, JavaScript, and MySQL." />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-<style>
-/* ------------
-  header
-  ---------- */
-.menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  background-color: #1023b6;
-  color: #fff;
-}
-
-.menu img {
-  position: relative;
-}
-
-.menu img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 60px;
-  display: flex;
-  margin-top: 8px;
-}
-
-.menu .logo {
-  font-weight: bold;
-  font-size: 25px;
-  margin-left: 60px;
-  font-family: Arial, sans-serif;
-}
-
-/* --------------
-  header content
------------------- */
-.mainmenu {
-  position: absolute;
-  top: 26px; /* Adjust the value as needed */
-  right: 40px; /* Adjust the value as needed */
-}
-
-.mainmenu a {
-  margin-left: 10px; /* Add some spacing between menu items */
-}
-
-.mainmenu a {
-  text-decoration: none;
-  color: #fff;
-  font-family: Arial, sans-serif;
-  margin: 30px;
-}
-
-.mainmenu a:hover {
-  color: #e3e3e3;
-}
-
-/* Center the grid on the page */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 180px;
-  position: absolute;
-  top: 150px;
-  left: 220px;
-}
-
-.grid img {
-  width: 150px;
-  /* border: 2px solid #000; */
-  border-radius: 5px;
-  
-}
-
-.grid .dyp {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  margin-top: 10px;
- 
-}
-
-.grid .dyp a {
-
-    color: #000;
-  font-weight: bold;
-  font-size: 20px;
-  text-decoration: none;
-  font-family: Arial, sans-serif;
-
-
-}
-
-</style>
 <body>
-  <header>
-    <div class="menu">
-      <div class="logo">DYP NOTES</div>
-      <img src="\dyp logo 1.jpeg" alt="logo">
-    </div>
-  </header>
-  
-  <div class="mainmenu">
-    <a href="http://localhost/college%20website/index.php">Home</a>
-    <a href="http://127.0.0.1:5500/home%20page/about%20us.html">About us</a>
-    <a href="http://127.0.0.1:5500/contact%20us.html">Contact Us</a>
-  </div>
 
-  <div class="grid">
-    <div class="dyp c">
-      <img src="\codinglangs\c.png" alt="">
-      <a href="https://drive.google.com/file/d/1avo0cZN4a0PPC96MBYhDdZRsHutnpp6G/view?usp=drivesdk">C Language</a>
-    </div>
-    <div class="dyp css">
-      <img src="\codinglangs\css.png" alt="">
-      <a href="https://drive.google.com/file/d/1aeEtuCe_8Z79dN3hYZTQjBWyCck84jHu/view?usp=drivesdk">CSS</a>
-    </div>
-    <div class="dyp html">
-      <img src="\codinglangs\html.png" alt="">
-      <a href="https://drive.google.com/file/d/1agWbIjmAalwiOm-qGWMx_UKDCDzE26Wb/view?usp=drivesdk">HTML</a>
-    </div>
-    <div class="dyp java">
-      <img src="\codinglangs\java.png" alt="">
-      <a href="https://drive.google.com/file/d/1azLYqOeJ0fVUVFFV4WxvWYDwUzc9GO5P/view?usp=drivesdk">Java</a>
-    </div>
-    <div class="dyp js">
-      <img src="\codinglangs\js.png" alt="">
-      <a href="https://drive.google.com/file/d/1awEZkZ6rGolkHKvp8mZvN4ZnCtDyE4CT/view?usp=drivesdk">JavaScript</a>
-    </div>
-    <div class="dyp mysql">
-      <img src="\codinglangs\mysql.png" alt="">
-      <a href="https://drive.google.com/file/d/1amH15Oc85ptKGNLbWULlP8ZfjjQ0Titk/view?usp=drivesdk">MySQL</a>
-    </div>
-    <div class="dyp php">
-      <img src="\codinglangs\php.png" alt="">
-      <a href="https://drive.google.com/file/d/1agyGrWrJolXzfgEUj8bzYYAmsZ4lNi1u/view?usp=drivesdk">PHP</a>
-    </div>
-    <div class="dyp python">
-      <img src="\codinglangs\python.png" alt="">
-      <a href="https://drive.google.com/file/d/1b-az4MIR438y0xvsxFrUBiAWwZznq-YI/view?usp=drivesdk">Python</a>
-    </div>
+<!-- Navbar -->
+<nav class="s-nav">
+  <a class="s-nav-brand" href="index.php">
+    <img src="images/dyp_logo.jpeg" alt="DYP Logo" />
+    <span>DYP Notes</span>
+  </a>
+  <div class="s-nav-links">
+    <a href="index.php">Home</a>
+    <a href="notes.html">Notes</a>
+    <a href="contact us.html">Contact Us</a>
   </div>
+  <button class="s-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="s-mobile-menu">
+  <a href="index.php">Home</a>
+  <a href="notes.html">Notes</a>
+  <a href="contact us.html">Contact Us</a>
+</div>
 
+<!-- Page Header -->
+<section class="s-page-header">
+  <div class="s-badge">💻 Programming Resources</div>
+  <h1>Coding <em>Languages</em></h1>
+  <p>Download curated notes for popular programming languages. Click on a language to get started.</p>
+</section>
+
+<!-- Image Card Grid -->
+<section class="s-section">
+  <p class="s-section-label">Select a Language</p>
+  <div class="s-img-grid">
+
+    <a class="s-img-card" href="https://drive.google.com/file/d/1avo0cZN4a0PPC96MBYhDdZRsHutnpp6G/view?usp=drivesdk" target="_blank" rel="noopener">
+      <img src="codinglangs/c.png" alt="C Language" />
+      <span class="s-img-label">C Language</span>
+    </a>
+
+    <a class="s-img-card" href="https://drive.google.com/file/d/1aeEtuCe_8Z79dN3hYZTQjBWyCck84jHu/view?usp=drivesdk" target="_blank" rel="noopener">
+      <img src="codinglangs/css.png" alt="CSS" />
+      <span class="s-img-label">CSS</span>
+    </a>
+
+    <a class="s-img-card" href="https://drive.google.com/file/d/1agWbIjmAalwiOm-qGWMx_UKDCDzE26Wb/view?usp=drivesdk" target="_blank" rel="noopener">
+      <img src="codinglangs/html.png" alt="HTML" />
+      <span class="s-img-label">HTML</span>
+    </a>
+
+    <a class="s-img-card" href="https://drive.google.com/file/d/1azLYqOeJ0fVUVFFV4WxvWYDwUzc9GO5P/view?usp=drivesdk" target="_blank" rel="noopener">
+      <img src="codinglangs/java.png" alt="Java" />
+      <span class="s-img-label">Java</span>
+    </a>
+
+    <a class="s-img-card" href="https://drive.google.com/file/d/1awEZkZ6rGolkHKvp8mZvN4ZnCtDyE4CT/view?usp=drivesdk" target="_blank" rel="noopener">
+      <img src="codinglangs/js.png" alt="JavaScript" />
+      <span class="s-img-label">JavaScript</span>
+    </a>
+
+    <a class="s-img-card" href="https://drive.google.com/file/d/1amH15Oc85ptKGNLbWULlP8ZfjjQ0Titk/view?usp=drivesdk" target="_blank" rel="noopener">
+      <img src="codinglangs/mysql.png" alt="MySQL" />
+      <span class="s-img-label">MySQL</span>
+    </a>
+
+    <a class="s-img-card" href="https://drive.google.com/file/d/1agyGrWrJolXzfgEUj8bzYYAmsZ4lNi1u/view?usp=drivesdk" target="_blank" rel="noopener">
+      <img src="codinglangs/php.png" alt="PHP" />
+      <span class="s-img-label">PHP</span>
+    </a>
+
+    <a class="s-img-card" href="https://drive.google.com/file/d/1b-az4MIR438y0xvsxFrUBiAWwZznq-YI/view?usp=drivesdk" target="_blank" rel="noopener">
+      <img src="codinglangs/python.png" alt="Python" />
+      <span class="s-img-label">Python</span>
+    </a>
+
+  </div>
+</section>
+
+<footer class="s-footer">© 2025 DYP Notes · Made for Students, by Students</footer>
+
+<script src="nav.js"></script>
 </body>
 </html>
