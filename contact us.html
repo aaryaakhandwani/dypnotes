@@ -7,6 +7,7 @@
   <meta name="description" content="Get in touch with the DYP Notes team for feedback, suggestions, or contributions." />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="notifications.css" />
 </head>
 <body>
 
@@ -73,7 +74,7 @@
   <div style="max-width: 600px; margin: 32px auto 0;">
     <article class="s-article">
       <h3 style="margin-top: 0;">Send a Message</h3>
-      <form onsubmit="event.preventDefault(); alert('Thank you! Your message has been sent.');">
+      <form onsubmit="event.preventDefault(); NotificationSystem.show({title: 'Message Sent!', message: 'Thank you for contacting us. We will get back to you shortly.', type: 'success', duration: 5000}); this.reset();">
         <div class="s-form-group">
           <label for="contact-name">Your Name</label>
           <input type="text" id="contact-name" placeholder="Enter your name" required />
@@ -95,5 +96,6 @@
 <footer class="s-footer">© 2025 DYP Notes · Made for Students, by Students</footer>
 
 <script src="nav.js"></script>
+<script src="notifications.js"></script>
 </body>
 </html>

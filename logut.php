@@ -4,5 +4,5 @@ session_start();
 
 session_destroy();
 
-header("Location: home page\index.php");
+header("Location: index.php?logout=success");
 exit;

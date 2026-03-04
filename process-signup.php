@@ -44,7 +44,7 @@ $stmt->bind_param("sss",
                   
 if ($stmt->execute()) {
 
-    header("Location: http://127.0.0.1:5500/click%20here.html");
+    header("Location: /dypnotes/login/login.php?signup=success");
     exit;
     
 } else {

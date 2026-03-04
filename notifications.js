@@ -37,29 +37,48 @@ const NotificationSystem = (() => {
      */
     function createNotificationElement(notif) {
         const { title, message, type = 'info', duration = 5000 } = notif;
-        
+
         const el = document.createElement('div');
         el.className = `sys-notification sys-notification-${type}`;
-        
+
         const iconHtml = icons[type] ? `<div class="sys-notification-icon">${icons[type]}</div>` : '';
-        
-        let textHtml = '';
-        if (title || message) {
-            textHtmlStr = '';
-            if (title) textHtmlStr += `<div class="sys-notification-title">${title}</div>`;
-            if (message) textHtmlStr += `<div class="sys-notification-message">${message}</div>`;
-            textHtml = `<div class="sys-notification-text">${textHtmlStr}</div>`;
+
+        // Use proper DOM node creation to prevent XSS (production-ready)
+        let textContentWrapper = false;
+        let titleEl, messageEl;
+
+        if (title) {
+            textContentWrapper = true;
+            titleEl = document.createElement('div');
+            titleEl.className = 'sys-notification-title';
+            titleEl.textContent = title;
+        }
+
+        if (message) {
+            textContentWrapper = true;
+            messageEl = document.createElement('div');
+            messageEl.className = 'sys-notification-message';
+            messageEl.textContent = message;
         }
 
         el.innerHTML = `
             <div class="sys-notification-content">
                 ${iconHtml}
-                ${textHtml}
+                <div class="sys-notification-text"></div>
             </div>
             <button class="sys-notification-close" aria-label="Close">
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
         `;
+
+        if (textContentWrapper) {
+            const textContainer = el.querySelector('.sys-notification-text');
+            if (titleEl) textContainer.appendChild(titleEl);
+            if (messageEl) textContainer.appendChild(messageEl);
+        } else {
+            const textContainer = el.querySelector('.sys-notification-text');
+            if (textContainer) textContainer.remove();
+        }
 
         // Setup close btn
         const closeBtn = el.querySelector('.sys-notification-close');
@@ -83,17 +102,17 @@ const NotificationSystem = (() => {
      */
     function closeNotification(el) {
         if (!el || el.classList.contains('hide')) return;
-        
+
         // Setup animation classes
         el.classList.remove('show');
         el.classList.add('hide');
-        
+
         // Remove from DOM after CSS transition ends (approx 400ms)
         setTimeout(() => {
             if (el.parentNode) {
                 el.parentNode.removeChild(el);
             }
-        }, 400); 
+        }, 400);
     }
 
     /**
@@ -110,7 +129,7 @@ const NotificationSystem = (() => {
             console.error('NotificationSystem.show expects an array of notification objects or a single object.');
             return;
         }
-        
+
         const container = getContainer();
 
         notifications.forEach((notif, index) => {
@@ -118,10 +137,10 @@ const NotificationSystem = (() => {
             setTimeout(() => {
                 const el = createNotificationElement(notif);
                 container.appendChild(el);
-                
+
                 // Force a browser reflow so the starting position is registered before adding 'show'
                 void el.offsetWidth;
-                
+
                 // Apply 'show' class to trigger appearance transition
                 el.classList.add('show');
             }, index * 100);

@@ -7,6 +7,7 @@
   <meta name="description" content="Access notes, question papers, recorded lectures & toppers' tips — curated for DYP Kolhapur students." />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="notifications.css" />
   <style>
     /* ── Homepage-specific styles (hero, announcement, cards) ── */
     #announcement {
@@ -105,6 +106,7 @@
     }
   </style>
 </head>
+
 <body>
 
 <!-- Version Tag -->
@@ -115,6 +117,8 @@
   📢 New update: Search &amp; Filter feature is being rolled out for students.
   <button onclick="this.parentElement.style.display='none'" aria-label="Close">✕</button>
 </div>
+
+<div id="notification-container"></div>
 
 <!-- Navbar -->
 <nav class="s-nav">
@@ -200,5 +204,31 @@
 <footer class="s-footer">© 2025 DYP Notes · Made for Students, by Students</footer>
 
 <script src="nav.js"></script>
+<script src="notifications.js"></script>
+
+<script>
+window.onload = function() {
+  <?php if (isset($_GET['logout']) && $_GET['logout'] === 'success'): ?>
+    NotificationSystem.show({
+      title: "Logged Out",
+      message: "You have been successfully logged out of DYP Notes.",
+      type: "info",
+      duration: 5000
+    });
+  <?php elseif (isset($_GET['login']) && $_GET['login'] === 'success'): ?>
+    NotificationSystem.show({
+      title: "Welcome Back",
+      message: "You have successfully logged in to DYP Notes!",
+      type: "success",
+      duration: 5000
+    });
+  <?php else: ?>
+    // Optional: Only show general welcome if no specific action occurred
+    // Remove or keep based on preference
+  <?php endif; ?>
+};
+</script>
+
+
 </body>
 </html>

@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             
             $_SESSION["user_id"] = $user["id"];
             
-            header("Location: /dypnotes/index.php");
+            header("Location: /dypnotes/index.php?login=success");
             exit;
         }
     }
@@ -42,8 +42,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <meta name="description" content="Login to your DYP Notes account." />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="../notifications.css" />
 </head>
 <body>
+
+<div id="notification-container"></div>
 
 <!-- Navbar -->
 <nav class="s-nav">
@@ -71,9 +74,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <p class="s-auth-sub">Sign in to access your DYP Notes account.</p>
 
     <?php if ($is_invalid): ?>
-      <div style="background:#ffe6ea; color:#b91c3a; padding:12px 16px; border-radius:12px; font-size:0.88rem; font-weight:600; margin-bottom:18px;">
-        ⚠ Invalid email or password. Please try again.
-      </div>
+      <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            NotificationSystem.show({
+                title: 'Login Failed',
+                message: 'Invalid email or password. Please try again.',
+                type: 'error',
+                duration: 5000
+            });
+        });
+      </script>
+    <?php endif; ?>
+
+    <?php if (isset($_GET['signup']) && $_GET['signup'] === 'success'): ?>
+      <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            NotificationSystem.show({
+                title: 'Account Created',
+                message: 'Your account was successfully created! You can now log in.',
+                type: 'success',
+                duration: 5000
+            });
+        });
+      </script>
     <?php endif; ?>
 
     <form method="post">
@@ -105,5 +128,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <footer class="s-footer">© 2025 DYP Notes · Made for Students, by Students</footer>
 
 <script src="../nav.js"></script>
+<script src="../notifications.js"></script>
 </body>
 </html>

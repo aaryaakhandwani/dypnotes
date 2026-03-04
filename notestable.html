@@ -7,6 +7,7 @@
   <meta name="description" content="Download first year subject-wise notes for DYP Kolhapur." />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="notifications.css" />
 </head>
 <body>
 
@@ -36,6 +37,20 @@
   <div class="s-badge">📗 First Year</div>
   <h1>First Year <em>Notes</em></h1>
   <p>Download subject-wise notes for all first year subjects (2022–23).</p>
+</section>
+
+<!-- Upload Section -->
+<section class="s-section" style="padding-top: 0; padding-bottom: 0;">
+  <div style="background: #fff; padding: 24px; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;">
+    <div>
+      <h3 style="margin-bottom: 6px; font-size: 1.2rem; color: var(--navy); font-family: 'Space Grotesk', sans-serif;">Contribute to First Year Notes</h3>
+      <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">Upload your own study materials or assignments.</p>
+    </div>
+    <form id="uploadNotesForm" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+      <input type="file" name="note_file" id="noteFile" required style="font-size: 0.9rem; padding: 8px; border: 1px solid #e5e7eb; border-radius: 6px; background: #f9fafb;" />
+      <button type="submit" class="s-link-btn" style="background: var(--blue); color: #fff; border: none; cursor: pointer; padding: 10px 20px; text-decoration: none;" id="uploadBtn">Upload Note</button>
+    </form>
+  </div>
 </section>
 
 <!-- Table -->
@@ -103,5 +118,52 @@
 <footer class="s-footer">© 2025 DYP Notes · Made for Students, by Students</footer>
 
 <script src="nav.js"></script>
+<script src="notifications.js"></script>
+<script>
+  document.getElementById('uploadNotesForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('uploadBtn');
+    btn.textContent = 'Uploading...';
+    btn.disabled = true;
+
+    const formData = new FormData(this);
+
+    fetch('upload-note.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        NotificationSystem.show({
+          title: 'Upload Successful',
+          message: data.message,
+          type: 'success',
+          duration: 5000
+        });
+        this.reset();
+      } else {
+        NotificationSystem.show({
+          title: 'Upload Failed',
+          message: data.message || 'An error occurred during upload',
+          type: 'error',
+          duration: 0
+        });
+      }
+    })
+    .catch(error => {
+      NotificationSystem.show({
+        title: 'Error',
+        message: 'Could not connect to server to upload file.',
+        type: 'error',
+        duration: 0
+      });
+    })
+    .finally(() => {
+      btn.textContent = 'Upload Note';
+      btn.disabled = false;
+    });
+  });
+</script>
 </body>
 </html>
