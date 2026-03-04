@@ -1,0 +1,147 @@
+/* notifications.css - Modern Notification System */
+
+/* Container for all notifications */
+#notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    pointer-events: none; /* Let clicks pass through empty space */
+}
+
+/* Individual notification */
+.sys-notification {
+    pointer-events: auto;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 350px;
+    padding: 16px 20px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    transform: translateX(120%);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28), 
+                opacity 0.4s ease, 
+                max-height 0.4s ease, 
+                padding 0.4s ease, 
+                margin 0.4s ease;
+    overflow: hidden;
+    max-height: 150px;
+}
+
+.sys-notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.sys-notification.hide {
+    transform: translateY(-20px);
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
+    border: 0;
+}
+
+/* Icons and Text Area */
+.sys-notification-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+/* Using simple text shapes/emoji for icons to avoid external dependencies, 
+   but you can easily replace these with FontAwesome or SVGs */
+.sys-notification-icon {
+    font-size: 20px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.sys-notification-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sys-notification-title {
+    font-weight: 600;
+    font-size: 15px;
+    color: #1f2937; /* Tailwind Gray 800 */
+}
+
+.sys-notification-message {
+    font-size: 14px;
+    color: #4b5563; /* Tailwind Gray 600 */
+    line-height: 1.4;
+}
+
+/* Close Button */
+.sys-notification-close {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    color: #9ca3af; /* Tailwind Gray 400 */
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    margin-left: 10px;
+    transition: color 0.2s;
+}
+
+.sys-notification-close:hover {
+    color: #1f2937;
+}
+
+/* Variant Styles */
+.sys-notification-info {
+    border-left: 4px solid #3b82f6; /* Blue 500 */
+}
+.sys-notification-info .sys-notification-icon {
+    color: #3b82f6;
+}
+
+.sys-notification-success {
+    border-left: 4px solid #10b981; /* Emerald 500 */
+}
+.sys-notification-success .sys-notification-icon {
+    color: #10b981;
+}
+
+.sys-notification-warning {
+    border-left: 4px solid #f59e0b; /* Amber 500 */
+}
+.sys-notification-warning .sys-notification-icon {
+    color: #f59e0b;
+}
+
+.sys-notification-error {
+    border-left: 4px solid #ef4444; /* Red 500 */
+}
+.sys-notification-error .sys-notification-icon {
+    color: #ef4444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+    #notification-container {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+    }
+    .sys-notification {
+        width: auto; /* Fill container width */
+        transform: translateY(-100%);
+    }
+    .sys-notification.show {
+        transform: translateY(0);
+    }
+}
