@@ -7,6 +7,8 @@
   <meta name="description" content="Download coding language notes for C, Java, Python, PHP, HTML, CSS, JavaScript, and MySQL." />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="notifications.css" />
+  <link rel="stylesheet" href="search-filter.css" />
 </head>
 <body>
 
@@ -38,47 +40,67 @@
   <p>Download curated notes for popular programming languages. Click on a language to get started.</p>
 </section>
 
+<!-- Search & Filter -->
+<section class="s-section" style="padding-bottom: 0;">
+  <div class="s-search-bar">
+    <div class="s-search-input-wrap">
+      <span class="s-search-icon">🔍</span>
+      <input type="text" id="searchNotesInput" class="s-search-input" placeholder="Search languages (e.g., Python, C, HTML)..." autocomplete="off" />
+    </div>
+    <div class="s-filter-select-wrap">
+      <select id="categorySelect" class="s-filter-select">
+        <option value="all">All Ecosystems</option>
+        <option value="frontend">Frontend</option>
+        <option value="backend">Backend</option>
+        <option value="core">Core Systems</option>
+        <option value="database">Database</option>
+      </select>
+      <span class="s-filter-icon">▼</span>
+    </div>
+  </div>
+</section>
+
 <!-- Image Card Grid -->
-<section class="s-section">
+<section class="s-section" style="padding-top: 10px;">
   <p class="s-section-label">Select a Language</p>
   <div class="s-img-grid">
 
-    <a class="s-img-card" href="https://drive.google.com/file/d/1avo0cZN4a0PPC96MBYhDdZRsHutnpp6G/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="s-img-card" href="https://drive.google.com/file/d/1avo0cZN4a0PPC96MBYhDdZRsHutnpp6G/view?usp=drivesdk" target="_blank" rel="noopener" data-category="core">
       <img src="codinglangs/c.png" alt="C Language" />
       <span class="s-img-label">C Language</span>
     </a>
 
-    <a class="s-img-card" href="https://drive.google.com/file/d/1aeEtuCe_8Z79dN3hYZTQjBWyCck84jHu/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="s-img-card" href="https://drive.google.com/file/d/1aeEtuCe_8Z79dN3hYZTQjBWyCck84jHu/view?usp=drivesdk" target="_blank" rel="noopener" data-category="frontend">
       <img src="codinglangs/css.png" alt="CSS" />
       <span class="s-img-label">CSS</span>
     </a>
 
-    <a class="s-img-card" href="https://drive.google.com/file/d/1agWbIjmAalwiOm-qGWMx_UKDCDzE26Wb/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="s-img-card" href="https://drive.google.com/file/d/1agWbIjmAalwiOm-qGWMx_UKDCDzE26Wb/view?usp=drivesdk" target="_blank" rel="noopener" data-category="frontend">
       <img src="codinglangs/html.png" alt="HTML" />
       <span class="s-img-label">HTML</span>
     </a>
 
-    <a class="s-img-card" href="https://drive.google.com/file/d/1azLYqOeJ0fVUVFFV4WxvWYDwUzc9GO5P/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="s-img-card" href="https://drive.google.com/file/d/1azLYqOeJ0fVUVFFV4WxvWYDwUzc9GO5P/view?usp=drivesdk" target="_blank" rel="noopener" data-category="backend">
       <img src="codinglangs/java.png" alt="Java" />
       <span class="s-img-label">Java</span>
     </a>
 
-    <a class="s-img-card" href="https://drive.google.com/file/d/1awEZkZ6rGolkHKvp8mZvN4ZnCtDyE4CT/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="s-img-card" href="https://drive.google.com/file/d/1awEZkZ6rGolkHKvp8mZvN4ZnCtDyE4CT/view?usp=drivesdk" target="_blank" rel="noopener" data-category="frontend">
       <img src="codinglangs/js.png" alt="JavaScript" />
       <span class="s-img-label">JavaScript</span>
     </a>
 
-    <a class="s-img-card" href="https://drive.google.com/file/d/1amH15Oc85ptKGNLbWULlP8ZfjjQ0Titk/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="s-img-card" href="https://drive.google.com/file/d/1amH15Oc85ptKGNLbWULlP8ZfjjQ0Titk/view?usp=drivesdk" target="_blank" rel="noopener" data-category="database">
       <img src="codinglangs/mysql.png" alt="MySQL" />
       <span class="s-img-label">MySQL</span>
     </a>
 
-    <a class="s-img-card" href="https://drive.google.com/file/d/1agyGrWrJolXzfgEUj8bzYYAmsZ4lNi1u/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="s-img-card" href="https://drive.google.com/file/d/1agyGrWrJolXzfgEUj8bzYYAmsZ4lNi1u/view?usp=drivesdk" target="_blank" rel="noopener" data-category="backend">
       <img src="codinglangs/php.png" alt="PHP" />
       <span class="s-img-label">PHP</span>
     </a>
 
-    <a class="s-img-card" href="https://drive.google.com/file/d/1b-az4MIR438y0xvsxFrUBiAWwZznq-YI/view?usp=drivesdk" target="_blank" rel="noopener">
+    <a class="s-img-card" href="https://drive.google.com/file/d/1b-az4MIR438y0xvsxFrUBiAWwZznq-YI/view?usp=drivesdk" target="_blank" rel="noopener" data-category="backend">
       <img src="codinglangs/python.png" alt="Python" />
       <span class="s-img-label">Python</span>
     </a>
@@ -90,5 +112,6 @@
 
 <script src="nav.js"></script>
 <script src="notifications.js"></script>
+<script src="search-filter.js"></script>
 </body>
 </html>

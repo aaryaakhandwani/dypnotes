@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="notifications.css" />
+  <link rel="stylesheet" href="search-filter.css" />
 </head>
 <body>
 
@@ -44,74 +45,150 @@
   <div style="background: #fff; padding: 24px; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;">
     <div>
       <h3 style="margin-bottom: 6px; font-size: 1.2rem; color: var(--navy); font-family: 'Space Grotesk', sans-serif;">Contribute to First Year Notes</h3>
-      <p style="color: var(--muted); font-size: 0.95rem; margin: 0;">Upload your own study materials or assignments.</p>
+      <p style="margin-bottom: 12px; font-size: 0.9rem; color: var(--muted);">Help your batchmates by sharing your study materials!</p>
+      <form id="uploadNoteForm" class="s-upload-form" enctype="multipart/form-data">
+        <div class="s-form-group">
+          <label for="subjectInput">Subject Name</label>
+          <input type="text" id="subjectInput" name="subject" placeholder="e.g. Physics, Data Structures" required />
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <div class="s-form-group" style="flex: 1;">
+            <label for="semesterSelect">Semester</label>
+            <select id="semesterSelect" name="semester" class="s-filter-select" required>
+              <option value="Sem 1">Semester 1</option>
+              <option value="Sem 2">Semester 2</option>
+              <option value="Sem 3">Semester 3</option>
+              <option value="Sem 4">Semester 4</option>
+              <option value="Sem 5">Semester 5</option>
+              <option value="Sem 6">Semester 6</option>
+              <option value="Sem 7">Semester 7</option>
+              <option value="Sem 8">Semester 8</option>
+            </select>
+          </div>
+          <div class="s-form-group" style="flex: 1;">
+            <label for="branchSelect">Branch</label>
+            <select id="branchSelect" name="branch" class="s-filter-select" required>
+              <option value="First Year">First Year (Common)</option>
+              <option value="Computer Science">Computer Science</option>
+              <option value="IT">IT</option>
+              <option value="EnTC">EnTC</option>
+              <option value="Mechanical">Mechanical</option>
+              <option value="Civil">Civil</option>
+            </select>
+          </div>
+        </div>
+        <div class="s-form-group" style="margin-top: 8px;">
+          <label for="noteFile" class="s-btn s-upload-label" style="display: inline-block; text-align: center; cursor: pointer; width: auto; padding: 10px 20px;">
+            <span style="font-size: 1.2rem; vertical-align: middle; margin-right: 6px;">📄</span> Select File (PDF/DOC)
+          </label>
+          <input type="file" id="noteFile" name="note_file" accept=".pdf,.doc,.docx,.txt" required style="display: none;" />
+          <span id="fileNameDisplay" style="margin-left: 12px; font-size: 0.85rem; color: var(--navy); font-weight: 500;">No file chosen</span>
+        </div>
+        <button type="submit" class="s-btn" id="uploadBtn" style="margin-top: 14px;">Upload Note</button>
+      </form>
     </div>
-    <form id="uploadNotesForm" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-      <input type="file" name="note_file" id="noteFile" required style="font-size: 0.9rem; padding: 8px; border: 1px solid #e5e7eb; border-radius: 6px; background: #f9fafb;" />
-      <button type="submit" class="s-link-btn" style="background: var(--blue); color: #fff; border: none; cursor: pointer; padding: 10px 20px; text-decoration: none;" id="uploadBtn">Upload Note</button>
-    </form>
   </div>
 </section>
 
-<!-- Table -->
+<!-- Table & Search -->
 <section class="s-section">
-  <div class="s-table-wrap">
-    <table class="s-table">
+  
+  <div class="s-search-bar" id="advancedSearchBar">
+    <div class="s-search-input-wrap">
+      <span class="s-search-icon">🔍</span>
+      <input type="text" id="dbSearchInput" class="s-search-input" placeholder="Search by subject or filename..." autocomplete="off" />
+    </div>
+    <div class="s-filter-select-wrap">
+      <select id="dbSemesterSelect" class="s-filter-select">
+        <option value="all">All Semesters</option>
+        <option value="Sem 1">Semester 1</option>
+        <option value="Sem 2">Semester 2</option>
+        <option value="Sem 3">Semester 3</option>
+        <option value="Sem 4">Semester 4</option>
+        <option value="Sem 5">Semester 5</option>
+        <option value="Sem 6">Semester 6</option>
+        <option value="Sem 7">Semester 7</option>
+        <option value="Sem 8">Semester 8</option>
+      </select>
+      <span class="s-filter-icon">▼</span>
+    </div>
+    <div class="s-filter-select-wrap">
+      <select id="dbBranchSelect" class="s-filter-select">
+        <option value="all">All Branches</option>
+        <option value="First Year">First Year (Common)</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="IT">IT</option>
+        <option value="EnTC">EnTC</option>
+        <option value="Mechanical">Mechanical</option>
+        <option value="Civil">Civil</option>
+      </select>
+      <span class="s-filter-icon">▼</span>
+    </div>
+  </div>
+
+  <div class="s-table-wrap" id="notesTableWrap">
+    <table class="s-table" id="notesDbTable">
       <thead>
         <tr>
           <th>Subject</th>
-          <th>Year</th>
+          <th>Branch & Sem</th>
+          <th>Date uploaded</th>
           <th>Download</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
+      <tbody id="dbNotesTableBody">
+        <tr data-category="science">
           <td>Physics</td>
           <td>2022-23</td>
           <td><a class="s-link-btn" href="https://drive.google.com/drive/folders/1aQXyorO8a2vp5-hT4SXcuXnL8Ai0bKWY" target="_blank" rel="noopener">Get Notes →</a></td>
         </tr>
-        <tr>
+        <tr data-category="math">
           <td>Linear Algebra</td>
           <td>2022-23</td>
           <td><a class="s-link-btn" href="https://drive.google.com/drive/folders/1_4k0VxNACb_oO4ZwOCTZo6j0qd4YR0Xe" target="_blank" rel="noopener">Get Notes →</a></td>
         </tr>
-        <tr>
+        <tr data-category="eng">
           <td>ECM</td>
           <td>2022-23</td>
           <td><a class="s-link-btn" href="https://drive.google.com/drive/folders/1a1pFJSDMLmym3v3m64NxmTjxx8ezTLbI" target="_blank" rel="noopener">Get Notes →</a></td>
         </tr>
-        <tr>
+        <tr data-category="prog">
           <td>CPP</td>
           <td>2022-23</td>
           <td><a class="s-link-btn" href="#">Get Notes →</a></td>
         </tr>
-        <tr>
+        <tr data-category="prog">
           <td>DTI</td>
           <td>2022-23</td>
           <td><a class="s-link-btn" href="#">Get Notes →</a></td>
         </tr>
-        <tr>
+        <tr data-category="science">
           <td>Chemistry</td>
           <td>2022-23</td>
           <td><a class="s-link-btn" href="#">Get Notes →</a></td>
         </tr>
-        <tr>
+        <tr data-category="eng">
           <td>Technical Communication</td>
           <td>2022-23</td>
           <td><a class="s-link-btn" href="#">Get Notes →</a></td>
         </tr>
-        <tr>
+        <tr data-category="math">
           <td>Differential Equations</td>
           <td>2022-23</td>
           <td><a class="s-link-btn" href="#">Get Notes →</a></td>
         </tr>
-        <tr>
+        <tr data-category="eng">
           <td>CAEG</td>
           <td>2022-23</td>
           <td><a class="s-link-btn" href="#">Get Notes →</a></td>
         </tr>
       </tbody>
     </table>
+    <div id="dbNoResults" class="s-no-results">
+        <div class="s-no-results-icon">🔍</div>
+        <div class="s-no-results-title">No Notes Found</div>
+        <div>No notes match your search criteria. Try modifying your filters or uploading a new note!</div>
+    </div>
   </div>
 </section>
 
@@ -120,8 +197,127 @@
 <script src="nav.js"></script>
 <script src="notifications.js"></script>
 <script>
-  document.getElementById('uploadNotesForm').addEventListener('submit', function(e) {
+  // Advanced Note Fetching & Client-Side Filtering
+  const searchInput = document.getElementById('dbSearchInput');
+  const semSelect = document.getElementById('dbSemesterSelect');
+  const branchSelect = document.getElementById('dbBranchSelect');
+  const tableBody = document.getElementById('dbNotesTableBody');
+  const dbNoResults = document.getElementById('dbNoResults');
+  const notesDbTable = document.getElementById('notesDbTable');
+  
+  // All rows (original static rows) get data attributes for filtering
+  const staticRows = tableBody.querySelectorAll('tr');
+  staticRows.forEach(tr => {
+      tr.setAttribute('data-semester', 'All Semesters'); // They apply to all sem essentially, or we can say First Year
+      tr.setAttribute('data-branch', 'First Year'); 
+      
+      // Update the Branch & Sem column visually for static rows
+      const ths = tr.querySelectorAll('td');
+      if (ths.length > 2) {
+          const oldDate = ths[1].textContent;
+          ths[1].innerHTML = `First Year <br><span style="font-size: 0.8rem; color: var(--muted);">Sem 1 & 2</span>`;
+          
+          // Insert a new Date Uploaded column for static files (just use the old year as a placeholder)
+          const newTd = document.createElement('td');
+          newTd.innerHTML = `<span style="font-size: 0.8rem; color: var(--muted);">Original Data</span>`;
+          tr.insertBefore(newTd, ths[2]);
+      }
+  });
+
+  // 1. Fetch from DB once on load to merge with static notes
+  function fetchDatabaseNotes() {
+    fetch(`fetch-notes.php`)
+      .then(res => res.json())
+      .then(response => {
+        if (response.success && response.data.length > 0) {
+          response.data.forEach(note => {
+            const tr = document.createElement('tr');
+            tr.setAttribute('data-semester', note.semester);
+            tr.setAttribute('data-branch', note.branch);
+            
+            const tDate = new Date(note.uploaded_at);
+            const dateStr = tDate.toLocaleDateString();
+
+            tr.innerHTML = `
+              <td style="font-weight: 500; color: var(--navy);">${note.subject} <br><span style="font-size: 0.8rem; color: var(--muted); font-weight: normal;">${note.filename}</span></td>
+              <td>${note.branch} <br><span style="font-size: 0.8rem; color: var(--muted);">${note.semester}</span></td>
+              <td style="font-size: 0.8rem; color: var(--muted);">${dateStr}</td>
+              <td><a class="s-link-btn" href="${note.file_path}" download>Download ↓</a></td>
+            `;
+            // Add right after static rows
+            tableBody.appendChild(tr);
+          });
+        }
+        applyFilters(); // Setup initial filter state
+      })
+      .catch(err => {
+        console.error('Failed to fetch DB notes', err);
+        applyFilters(); 
+      });
+  }
+
+  // 2. Client-Side Filtering of all combined rows
+  function applyFilters() {
+      const q = searchInput.value.toLowerCase().trim();
+      const sem = semSelect.value;
+      const branch = branchSelect.value;
+      
+      const rows = tableBody.querySelectorAll('tr');
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+          const textMatches = row.textContent.toLowerCase().includes(q);
+          const rowSem = row.getAttribute('data-semester') || '';
+          const rowBranch = row.getAttribute('data-branch') || '';
+          
+          const semMatches = sem === 'all' || rowSem === sem || rowSem === 'All Semesters' || (rowBranch === 'First Year' && (sem === 'Sem 1' || sem === 'Sem 2'));
+          const branchMatches = branch === 'all' || rowBranch === branch || rowBranch === 'First Year';
+
+          if (textMatches && semMatches && branchMatches) {
+              row.style.display = 'table-row';
+              visibleCount++;
+          } else {
+              row.style.display = 'none';
+          }
+      });
+
+      if (visibleCount === 0) {
+          notesDbTable.style.display = 'none';
+          dbNoResults.classList.add('show');
+      } else {
+          notesDbTable.style.display = 'table';
+          dbNoResults.classList.remove('show');
+      }
+  }
+
+  // Event Listeners for search & filters
+  searchInput.addEventListener('input', applyFilters);
+  semSelect.addEventListener('change', applyFilters);
+  branchSelect.addEventListener('change', applyFilters);
+
+  // Initial Fetch on load
+  window.addEventListener('DOMContentLoaded', fetchDatabaseNotes);
+
+  // Upload Logic Update
+  const fileInput = document.getElementById('noteFile');
+  const fileNameDisplay = document.getElementById('fileNameDisplay');
+  fileInput.addEventListener('change', (e) => {
+    if (e.target.files.length > 0) {
+      fileNameDisplay.textContent = e.target.files[0].name;
+    } else {
+      fileNameDisplay.textContent = 'No file chosen';
+    }
+  });
+
+  document.getElementById('uploadNoteForm').addEventListener('submit', function(e) {
     e.preventDefault();
+    
+    // Check if we have NotificationSystem globally
+    if (typeof NotificationSystem === 'undefined') {
+      alert("Notification system not loaded yet.");
+      return;
+    }
+
     const btn = document.getElementById('uploadBtn');
     btn.textContent = 'Uploading...';
     btn.disabled = true;
@@ -134,29 +330,44 @@
     })
     .then(response => response.json())
     .then(data => {
-      if (data.status === 'success') {
+      if (data.success) {
         NotificationSystem.show({
           title: 'Upload Successful',
-          message: data.message,
+          message: data.message || 'Note uploaded and saved to the database successfully!',
           type: 'success',
-          duration: 5000
+          duration: 4000
         });
         this.reset();
+        fileNameDisplay.textContent = 'No file chosen';
+        // Append newly uploaded note instantly to DOM
+        const tr = document.createElement('tr');
+        tr.setAttribute('data-semester', data.note.semester);
+        tr.setAttribute('data-branch', data.note.branch);
+        
+        const dateStr = new Date().toLocaleDateString();
+        tr.innerHTML = `
+          <td style="font-weight: 500; color: var(--navy);">${data.note.subject} <br><span style="font-size: 0.8rem; color: var(--green); font-weight: normal;">New Upload</span></td>
+          <td>${data.note.branch} <br><span style="font-size: 0.8rem; color: var(--muted);">${data.note.semester}</span></td>
+          <td style="font-size: 0.8rem; color: var(--muted);">${dateStr}</td>
+          <td><a class="s-link-btn" href="${data.note.file_path}" download>Download ↓</a></td>
+        `;
+        tableBody.insertBefore(tr, tableBody.firstChild); // Place at top
+        applyFilters(); 
       } else {
         NotificationSystem.show({
           title: 'Upload Failed',
-          message: data.message || 'An error occurred during upload',
+          message: data.message || 'There was an error saving the file.',
           type: 'error',
-          duration: 0
+          duration: 5000
         });
       }
     })
     .catch(error => {
       NotificationSystem.show({
-        title: 'Error',
-        message: 'Could not connect to server to upload file.',
+        title: 'Network Error',
+        message: 'Could not connect to the server to upload the file.',
         type: 'error',
-        duration: 0
+        duration: 5000
       });
     })
     .finally(() => {
@@ -165,5 +376,7 @@
     });
   });
 </script>
+
+<script src="search-filter.js"></script>
 </body>
 </html>

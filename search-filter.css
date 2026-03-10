@@ -1,0 +1,133 @@
+/* search-filter.css - Modern Real-Time Search & Filter System */
+
+.s-search-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: #fff;
+    padding: 16px 24px;
+    border-radius: var(--radius-sm, 12px);
+    border: 1.5px solid #dde6ff;
+    box-shadow: var(--shadow-sm, 0 2px 12px rgba(16, 35, 182, 0.08));
+    margin-bottom: 24px;
+    align-items: center;
+}
+
+.s-search-input-wrap {
+    flex: 1;
+    min-width: 250px;
+    position: relative;
+}
+
+.s-search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted, #6b7db3);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+
+.s-search-input {
+    width: 100%;
+    padding: 12px 14px 12px 42px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text, #0d1b4b);
+    background: #f9fafb;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.s-search-input:focus {
+    border-color: var(--accent, #4f6fff);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(79, 111, 255, 0.15);
+}
+
+.s-filter-select-wrap {
+    position: relative;
+    min-width: 180px;
+}
+
+.s-filter-select {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    padding: 12px 36px 12px 16px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--text, #0d1b4b);
+    background: #fff;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.s-filter-select:focus {
+    border-color: var(--accent, #4f6fff);
+    box-shadow: 0 0 0 3px rgba(79, 111, 255, 0.15);
+}
+
+.s-filter-icon {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted, #6b7db3);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+
+/* Empty State / No Results UI */
+.s-no-results {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+    background: #fff;
+    border-radius: var(--radius-sm, 12px);
+    border: 1.5px dashed #dde6ff;
+    color: var(--muted, #6b7db3);
+    margin-top: 20px;
+}
+
+.s-no-results.show {
+    display: block;
+}
+
+.s-no-results-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+.s-no-results-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--navy, #0a1560);
+    margin-bottom: 6px;
+}
+
+/* Utility to hide elements smoothly during filter */
+.s-hidden-item {
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+    .s-search-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .s-filter-select-wrap {
+        width: 100%;
+    }
+}
